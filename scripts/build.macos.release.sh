@@ -11,7 +11,7 @@ brew reinstall rapidjson libevent zlib pcre2 pkgconfig
 #make -j8 > /dev/null
 #cd ..
 
-git clone https://github.com/jbeder/yaml-cpp --depth=1
+git clone https://github.com/jbeder/yaml-cpp --depth=1 --branch 0.8.0
 cd yaml-cpp
 cmake -DCMAKE_BUILD_TYPE=Release -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF . > /dev/null
 make install -j8 > /dev/null
