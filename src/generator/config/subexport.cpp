@@ -424,6 +424,7 @@ proxyToClash(std::vector<Proxy> &nodes, YAML::Node &yamlnode, const ProxyGroupCo
                 else if (!x.Host.empty()) {
                     singleproxy["sni"] = x.Host;
                 }
+                singleproxy["tls"] = x.TLSSecure;
                 if (!x.AlpnList.empty()) {
                     for (auto &item: x.AlpnList) {
                         singleproxy["alpn"].push_back(item);
@@ -435,6 +436,18 @@ proxyToClash(std::vector<Proxy> &nodes, YAML::Node &yamlnode, const ProxyGroupCo
                 }
                 if (!scv.is_undef())
                     singleproxy["skip-cert-verify"] = scv.get();
+                if (!x.PublicKey.empty()) {
+                    singleproxy["reality-opts"]["public-key"] = x.PublicKey;
+                }
+                if (!x.ShortId.empty()) {
+                    singleproxy["reality-opts"]["short-id"] = "" + x.ShortId;
+                }
+                if (!x.PublicKey.empty()) {
+                    singleproxy["client-fingerprint"] = "random";
+                }
+                if (!x.Fingerprint.empty()) {
+                    singleproxy["client-fingerprint"] = x.Fingerprint;
+                }
                 switch (hash_(x.TransferProtocol)) {
                     case "tcp"_hash:
                         break;

@@ -73,8 +73,9 @@ void httpConstruct(Proxy &node, const std::string &group, const std::string &rem
 void trojanConstruct(Proxy &node, const std::string &group, const std::string &remarks, const std::string &server,
                      const std::string &port, const std::string &password, const std::string &network,
                      const std::string &host, const std::string &path, const std::string &fp, const std::string &sni,
+                     const std::string &tls, const std::string &pbk, const std::string &sid,
                      const std::vector<std::string> &alpnList,
-                     bool tlssecure, tribool udp = tribool(), tribool tfo = tribool(), tribool scv = tribool(),
+                     tribool udp = tribool(), tribool tfo = tribool(), tribool scv = tribool(),
                      tribool tls13 = tribool(),const std::string& underlying_proxy="");
 void anyTlSConstruct(Proxy &node, const std::string &group, const std::string &remarks,
                        const std::string &port, const std::string &password,
